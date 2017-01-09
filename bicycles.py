@@ -1,0 +1,16 @@
+bicycles = ['treck', 'cannodeal', 'redline', 'specialise']
+print(bicycles)
+print(bicycles[0].title())
+print(bicycles[-1].title())
+bicycles.append('Joey')
+print(bicycles)
+bicycles.insert(0, 'Roan')
+print(bicycles)
+del bicycles[0]
+print(bicycles)
+data_acquire = bicycles.pop()
+print(data_acquire)
+print(bicycles)
+bicycles.append("specialise")
+print(bicycles)
+print(bicycles.remove("specialise"))
