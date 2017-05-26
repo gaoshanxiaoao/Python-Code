@@ -17,3 +17,5 @@ for t in range(0, 3):
     players1[t] = 'hello'
 print(players1)
 print(players)
+
+print("hello world")
