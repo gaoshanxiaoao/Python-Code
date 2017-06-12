@@ -1,6 +1,7 @@
 import unittest
 import Simple_Factory_pattern as sf
 import Strategy_pattern as sp
+import Decorator_pattern as dp
 
 
 class TestPatterns(unittest.TestCase):
@@ -29,5 +30,14 @@ class TestPatterns(unittest.TestCase):
             print("Undefine type.Use normal mode.")
             cc = strategy[1]
         print("you will pay {0}%".format(cc.GetResult(money)))
+
+    def test_decorator_pattern(self):
+        bt = dp.BigTrouser()
+        ts = dp.TShirts()
+        p = dp.Person("somebody")
+        bt.Decorate(p)
+        ts.Decorate(bt)
+        ts.Show()
+
 
 unittest.main()
