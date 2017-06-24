@@ -2,6 +2,11 @@ import unittest
 import Simple_Factory_pattern as sf
 import Strategy_pattern as sp
 import Decorator_pattern as dp
+import Propotype_pattern as pp
+import copy
+import Template_pattern as tp
+import Facade_pattern as fp
+import Observation_pattern as op
 
 
 class TestPatterns(unittest.TestCase):
@@ -39,5 +44,46 @@ class TestPatterns(unittest.TestCase):
         ts.Decorate(bt)
         ts.Show()
 
+    def test_propotype_pattern(self):
+        a = pp.Resume("a")
+        b = a.Clone()
+        c = copy.copy(a)
+        d = copy.deepcopy(a)
+        a.SetAge(7)
+        b.SetAge(12)
+        c.SetAge(15)
+        d.SetAge(18)
+        a.SetWorkExp("PrimarySchool", 1996)
+        b.SetWorkExp("MidSchool", 2001)
+        c.SetWorkExp("HighSchool", 2004)
+        d.SetWorkExp("University", 2007)
+        a.Display()
+        b.Display()
+        c.Display()
+        d.Display()
+
+    def test_template_pattern(self):
+        s1 = tp.TestPaperA()
+        s2 = tp.TestPaperB()
+        print("Student 1")
+        s1.TestQuestion1()
+        s1.TestQuestion2()
+        print("Student 2")
+        s2.TestQuestion1()
+        s2.TestQuestion2()
+
+    def test_facade_pattern(self):
+        f1 = fp.Facade()
+        f1.MethodA()
+        f1.MethodB()
+
+    def test_observer_pattern(self):
+        p = op.Secretary()
+        s1 = op.StockObserver("xh", p)
+        s2 = op.NBAObserver("wyt", p)
+        p.Attach(s1)
+        p.Attach(s2)
+        p.action = "WARNING:BOSS"
+        p.Notify()
 
 unittest.main()
