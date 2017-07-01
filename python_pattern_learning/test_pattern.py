@@ -7,11 +7,15 @@ import copy
 import Template_pattern as tp
 import Facade_pattern as fp
 import Observation_pattern as op
+import Adapter_pattern as ap
+import Originator_pattern as orp
+import Component_pattern as cp
 
 
 class TestPatterns(unittest.TestCase):
 
     def test_simple_factory_pattern(self):
+        print("-------factory_pattern---------------------------")
         op = input("operator: ")
         opa = input("a: ")
         opb = input("b: ")
@@ -22,6 +26,7 @@ class TestPatterns(unittest.TestCase):
         print(cal.GetResult())
 
     def test_strategy_pattern(self):
+        print("---------------strategy_pattern---------------")
         money = input("money:")
         strategy = {}
         strategy[1] = sp.CashContext(sp.CashNormal())
@@ -37,6 +42,7 @@ class TestPatterns(unittest.TestCase):
         print("you will pay {0}%".format(cc.GetResult(money)))
 
     def test_decorator_pattern(self):
+        print("----------decorator_pattern----------------")
         bt = dp.BigTrouser()
         ts = dp.TShirts()
         p = dp.Person("somebody")
@@ -45,6 +51,7 @@ class TestPatterns(unittest.TestCase):
         ts.Show()
 
     def test_propotype_pattern(self):
+        print("--------------propotype_pattern------------------")
         a = pp.Resume("a")
         b = a.Clone()
         c = copy.copy(a)
@@ -63,6 +70,7 @@ class TestPatterns(unittest.TestCase):
         d.Display()
 
     def test_template_pattern(self):
+        print("---------template_pattern---------------")
         s1 = tp.TestPaperA()
         s2 = tp.TestPaperB()
         print("Student 1")
@@ -73,11 +81,13 @@ class TestPatterns(unittest.TestCase):
         s2.TestQuestion2()
 
     def test_facade_pattern(self):
+        print("------------facade_pattern----------------")
         f1 = fp.Facade()
         f1.MethodA()
         f1.MethodB()
 
     def test_observer_pattern(self):
+        print("------------observer_pattern-------------")
         p = op.Secretary()
         s1 = op.StockObserver("xh", p)
         s2 = op.NBAObserver("wyt", p)
@@ -85,5 +95,34 @@ class TestPatterns(unittest.TestCase):
         p.Attach(s2)
         p.action = "WARNING:BOSS"
         p.Notify()
+
+    def test_adapter_pattern(self):
+        print("-------------adapter_pattern----------------")
+        adaptee = ap.Adaptee()
+        adapter = ap.Adapter(adaptee)
+        adapter.Request()
+
+    def test_originator_pattern(self):
+        print("-------------originator_pattern-----------------")
+        on = orp.Originator()
+        on.state = "on"
+        on.Show()
+        c = orp.Caretaker()
+        c.memo = on.CreateMemo()
+        on.state = "off"
+        on.Show()
+        # ghost the state
+        on.SetMemo(c.memo)
+        on.Show()
+
+    def test_component_pattern(self):
+        p = cp.Composite("Wong")
+        p.Add(Leaf("Lee"))
+        p.Add(Leaf("Zhao"))
+        p1 = cp.Composite("Wu")
+        p1.Add(Leaf("San"))
+        p.Add(p1)
+        p.Display(1)
+
 
 unittest.main()

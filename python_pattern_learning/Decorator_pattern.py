@@ -41,10 +41,11 @@ class BigTrouser(Finary):
         print("Big Trouser")
         # self.componet.Show()
         super().Show()
-
+'''
 bt = BigTrouser()
 ts = TShirts()
 p = Person("somebody")
 bt.Decorate(p)
 ts.Decorate(bt)
 ts.Show()
+'''
