@@ -10,6 +10,15 @@ import Observation_pattern as op
 import Adapter_pattern as ap
 import Originator_pattern as orp
 import Component_pattern as cp
+import Visitor_pattern as vp
+import State_pattern as stp
+import Responsibility_pattern as rp
+import Proxy_pattern as pp
+import Mediator_pattern as mp
+import Interpreter_pattern as ip
+import Flyweight_pattern as flp
+import Command_pattern as cop
+import Bridging_pattern as bp
 
 
 class TestPatterns(unittest.TestCase):
@@ -116,6 +125,7 @@ class TestPatterns(unittest.TestCase):
         on.Show()
 
     def test_component_pattern(self):
+        print("--------------component_pattern-------------------")
         p = cp.Composite("Wong")
         p.Add(Leaf("Lee"))
         p.Add(Leaf("Zhao"))
@@ -123,6 +133,93 @@ class TestPatterns(unittest.TestCase):
         p1.Add(Leaf("San"))
         p.Add(p1)
         p.Display(1)
+
+    def test_visitor_pattern(self):
+        print("---------------visitor_pattern---------------")
+        os = vp.ObjectStructure()
+        os.Add(Man())
+        os.Add(Woman())
+        sc = vp.Success()
+        os.Display(sc)
+        fl = vp.Failure()
+        os.Display(fl)
+
+    def test_state_pattern(self):
+        print("----------------state_pattern-----------------")
+        mywork = stp.Work()
+        mywork.hour = 9
+        mywork.WriteProgram()
+        mywork.hour = 14
+        mywork.WriteProgram()
+
+    def test_responsibility_pattern(self):
+        print("--------------responsibility_pattern--------------")
+        common = rp.CommonManager("Zhang")
+        major = rp.MajorDomo("Lee")
+        common.SetSuccessor(major)
+        req = rp.Request("rest", 33)
+        common.GetRequest(req)
+        req2 = rp.Request("salary", 3)
+        common.GetRequest(req2)
+
+    def test_proxy_pattern(self):
+        print("--------------------proxy_pattern------------------")
+        p = pp.Proxy()
+        p.Request()
+
+    def test_mediator_pattern(self):
+        print("-----------------mediator_pattern--------------------")
+        m = mp.ConcreteMediator()
+        col1 = mp.Collegue1(m)
+        col2 = mp.Colleague2(m)
+        m.col1 = col1
+        m.col2 = col2
+        col1.Send("How are you ?")
+        col2.Send("Fine.")
+
+    def test_interpreter_pattern(self):
+        print("----------------interpreter_pattern-------------------")
+        context = ""
+        c = []
+        c = c + [Expression()]
+        c = c + [NonterminalExpression()]
+        c = c + [Expression()]
+        c = c + [Expression()]
+        for a in c:
+            a.Interpret(context)
+
+    def test_flyweight_pattern(self):
+        print("--------------flyweight_pattern--------------")
+        f = flp.WebFactory()
+        ws = f.GetWeb("blog")
+        ws.Use("Lee")
+        ws2 = f.GetWeb("show")
+        ws2.Use("Jack")
+        ws3 = f.GetWeb("blog")
+        ws3.Use("Chen")
+        ws4 = flp.UnShareWebSite("TEST")
+        ws4.Use("Mr.Q")
+        print(f.webtype)
+        f.GetCount()
+
+    def test_command_pattern(self):
+        print("----------command_pattern-------------")
+
+        barbucer = cop.Barbucer()
+        cmd = cop.BakeMuttonCmd(barbucer)
+        cmd2 = cop.ChickenWingCmd(barbucer)
+        girl = cop.Waiter()
+        girl.SetCmd(cmd)
+        girl.SetCmd(cmd2)
+        girl.Notify()
+
+    def test_bridging_pattern(self):
+        print("-------bridging_pattern----------")
+        brand = bp.HandsetBrandM()
+        brand.SetHandsetSoft(HandsetGame())
+        brand.Run()
+        brand.SetHandsetSoft(HandsetAddressList())
+        brand.Run()
 
 
 unittest.main()

@@ -1,3 +1,7 @@
+
+# similar as the Adapter_pattern.
+
+
 class State:
 
     def WriteProgram(self):

@@ -42,11 +42,3 @@ class Composite(Component):
         # Recursive call when the com is Composite objective
         for com in self.c:
             com.Display(nDepth + 2)
-
-p = Composite("Wong")
-p.Add(Leaf("Lee"))
-p.Add(Leaf("Zhao"))
-p1 = Composite("Wu")
-p1.Add(Leaf("San"))
-p.Add(p1)
-p.Display(1)

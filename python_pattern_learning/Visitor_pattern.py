@@ -54,11 +54,3 @@ class ObjectStructure:
     def Display(self, act):
         for p in self.plist:
             p.Accept(act)
-
-os = ObjectStructure()
-os.Add(Man())
-os.Add(Woman())
-sc = Success()
-os.Display(sc)
-fl = Failure()
-os.Display(fl)

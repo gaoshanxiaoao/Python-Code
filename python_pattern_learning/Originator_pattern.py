@@ -22,14 +22,3 @@ class Memo:
 
 class Caretaker:
     memo = ""
-
-on = Originator()
-on.state = "on"
-on.Show()
-c = Caretaker()
-c.memo = on.CreateMemo()
-on.state = "off"
-on.Show()
-# ghost the state
-on.SetMemo(c.memo)
-on.Show()
