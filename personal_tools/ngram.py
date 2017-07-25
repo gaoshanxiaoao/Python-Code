@@ -61,7 +61,7 @@ def checkNgrams(authorset, output):
             if key not in output_ngrams:
                 del output[key]
             else:
-                value = value + output_ngrams[key]
+                output[key] = value + output_ngrams[key]
         return ouput
 
 

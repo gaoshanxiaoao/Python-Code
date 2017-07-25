@@ -35,11 +35,3 @@ class ConcreteMediator(Mediator):
             col1.Notify(message)
         else:
             col2.Notify(message)
-
-m = ConcreteMediator()
-col1 = Collegue1(m)
-col2 = Colleague2(m)
-m.col1 = col1
-m.col2 = col2
-col1.Send("How are you ?")
-col2.Send("Fine.")

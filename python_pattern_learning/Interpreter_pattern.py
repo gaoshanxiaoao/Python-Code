@@ -21,12 +21,3 @@ class NonterminalExpression(AbstractExpression):
 
     def Interpret(self, context):
         print("Nonterminal interpret")
-
-context = ""
-c = []
-c = c + [Expression()]
-c = c + [NonterminalExpression()]
-c = c + [Expression()]
-c = c + [Expression()]
-for a in c:
-    a.Interpret(context)

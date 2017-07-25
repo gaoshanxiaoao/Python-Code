@@ -40,11 +40,3 @@ class Waiter:
     def Notify(self):
         for cmd in self.order:
             cmd.ExecuteCmd()
-
-barbucer = Barbucer()
-cmd = BakeMuttonCmd(barbucer)
-cmd2 = ChickenWingCmd(barbucer)
-girl = Waiter()
-girl.SetCmd(cmd)
-girl.SetCmd(cmd2)
-girl.Notify()

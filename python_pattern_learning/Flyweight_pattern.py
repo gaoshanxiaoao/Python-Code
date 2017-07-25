@@ -45,16 +45,3 @@ class WebFactory:
     def GetCount(self):
         for key in self.webtype:
             print("type:{0},count:{1}".format(key, self.count[key]))
-
-
-f = WebFactory()
-ws = f.GetWeb("blog")
-ws.Use("Lee")
-ws2 = f.GetWeb("show")
-ws2.Use("Jack")
-ws3 = f.GetWeb("blog")
-ws3.Use("Chen")
-ws4 = UnShareWebSite("TEST")
-ws4.Use("Mr.Q")
-print(f.webtype)
-f.GetCount()

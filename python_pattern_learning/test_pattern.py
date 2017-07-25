@@ -13,7 +13,7 @@ import Component_pattern as cp
 import Visitor_pattern as vp
 import State_pattern as stp
 import Responsibility_pattern as rp
-import Proxy_pattern as pp
+import Proxy_pattern as prp
 import Mediator_pattern as mp
 import Interpreter_pattern as ip
 import Flyweight_pattern as flp
@@ -164,7 +164,7 @@ class TestPatterns(unittest.TestCase):
 
     def test_proxy_pattern(self):
         print("--------------------proxy_pattern------------------")
-        p = pp.Proxy()
+        p = prp.Proxy()
         p.Request()
 
     def test_mediator_pattern(self):

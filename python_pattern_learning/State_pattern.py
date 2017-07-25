@@ -40,9 +40,3 @@ class Work:
 
     def WriteProgram(self):
         self.current.WriteProgram(self)
-
-mywork = Work()
-mywork.hour = 9
-mywork.WriteProgram()
-mywork.hour = 14
-mywork.WriteProgram()

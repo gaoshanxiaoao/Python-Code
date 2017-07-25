@@ -15,7 +15,3 @@ class Proxy(Interface):
     def Request(self):
         self.real = RealSubject()
         self.real.Request()
-
-if __name__ == "__main__":
-    p = Proxy()
-    p.Request()

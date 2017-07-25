@@ -42,10 +42,3 @@ class HandsetBrandN(HandsetBrand):
         if not (self.m_soft == None):
             print("BrandN")
             self.m_soft.Run()
-
-
-brand = HandsetBrandM()
-brand.SetHandsetSoft(HandsetGame())
-brand.Run()
-brand.SetHandsetSoft(HandsetAddressList())
-brand.Run()

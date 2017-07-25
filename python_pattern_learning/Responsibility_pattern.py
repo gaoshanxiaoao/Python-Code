@@ -31,11 +31,3 @@ class MajorDomo(Manager):
     def GetRequest(self, req):
         if(req.num >= 10):
             print("{0} handled {1} request".format(self.name, req.num))
-
-common = CommonManager("Zhang")
-major = MajorDomo("Lee")
-common.SetSuccessor(major)
-req = Request("rest", 33)
-common.GetRequest(req)
-req2 = Request("salary", 3)
-common.GetRequest(req2)

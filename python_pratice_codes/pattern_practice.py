@@ -192,8 +192,77 @@ class Context:
 
     def execute(self):
         self.strategy.operate()
+#-------------decorator pattern--------------------
 
 
+class ILaw:
+
+    def list_structure(self):
+        pass
+
+    def deploy_implements(self):
+        pass
+
+
+class Original_British_Law(ILaw):
+
+    def __init__(slef):
+        pass
+
+    def list_structure(self):
+        print("add the first law command....")
+
+    def deploy_implements(self):
+        print("publish this law ....")
+
+
+class Decorator(ILaw):
+
+    def __init__(self, law):
+        self.law = law
+
+    def list_structure(self):
+        self.law.list_structure()
+
+    def deploy_implements(self):
+        self.law.deploy_implements()
+
+
+class Fixed_British_Law1(Decorator):
+
+    def __init__(self, law):
+        super().__init__(law)
+
+    def list_structur(self):
+        super().list_structure()
+        print("fixed law....")
+'''
+    def deploy_implements(self):
+        super().deploy_implements()
+'''
+
+
+class Fixed_British_Law2(Decorator):
+
+    def __init__(self, law):
+        super().__init__(law)
+
+    def list_structure(self):
+        super().list_structure()
+        print("fixed law again....")
+'''
+    def deploy_implements(self):
+        super().deploy_implements()
+'''
+
+print("---------------------------")
+original_law = Original_British_Law()
+fixed_law1 = Fixed_British_Law1(original_law)
+fixed_law1 = Fixed_British_Law2(fixed_law1)
+fixed_law1.list_structure()
+fixed_law1.deploy_implements()
+
+print("---------------------------")
 context = Context(Prevent_Strategy())
 context.execute()
 
